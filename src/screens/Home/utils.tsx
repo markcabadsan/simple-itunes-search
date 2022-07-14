@@ -1,19 +1,16 @@
 import { Sections } from './Home';
 
-export const formatData = (data: any[]): Sections[] => {
+export const formatData = (data: any[], groupBy: string): Sections[] => {
   let formattedData: Sections[] = [];
-  const sectionTitles = [
-    ...new Set(data.map(({ collectionName }) => collectionName)),
-  ];
+  const sectionTitles = [...new Set(data.map((item) => item[groupBy]))];
   sectionTitles.sort().forEach((title) => {
     const subData = [
-      ...new Set(data.filter(({ collectionName }) => collectionName === title)),
+      ...new Set(data.filter((item) => item[groupBy] === title)),
     ];
     formattedData.push({
       title,
       data: subData.sort((a, b) => a.trackName.localeCompare(b.trackName)),
     });
-    console.log('formattedData', formattedData);
   });
 
   return formattedData;

@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
   },
   image: { height: 60, width: 60, resizeMode: 'contain' },
   detailsContainer: { marginLeft: 10, flex: 1 },
-  detail: { color: 'black' },
+  detail: { color: 'white' },
 });
 
 export default styles;
